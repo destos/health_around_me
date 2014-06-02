@@ -1,0 +1,26 @@
+@import 'variables'
+
+button_styles(class, base_color)
+    &.btn-{class}
+        background: base_color
+        border-color: darken(base_color, 20%)
+        &:hover
+            background: darken(base_color, 15%)
+
+.btn
+    border: 1px solid gray
+    background: white
+    border-radius: 3px
+    display: inline-block
+    color: white
+    cursor: pointer
+    margin-right: 5px
+    padding: 4px 8px
+    &:hover
+        background: gray
+        color: white
+    button_styles('primary', #6CC5FD)
+    button_styles('success', $good_color)
+    button_styles('danger', $good_color)
+    button_styles('warning', $neutral_color)
+

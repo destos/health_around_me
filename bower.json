@@ -1,0 +1,19 @@
+{
+  "name": "ham-app",
+  "version": "0.0.1",
+  "authors": [
+    "patrick@forringer.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.10",
+    "angularjs-geolocation": "~0.1.1"
+  }
+}
