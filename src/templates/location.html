@@ -1,4 +1,4 @@
-<button ng-click="retreive_location(location)" ng-disabled="searching" class="btn" ng-class="{'btn-warning': (!location && !searching), 'btn-primary': location}">{{button_text}}</button>
+<button ng-click="retreive_location(location)" ng-disabled="searching" class="btn fill large" ng-class="{'btn-warning': (!location && !searching), 'btn-primary': location}">{{button_text}}</button>
 <p>Your must be in our <a href="#service">service area</a> to get useful data.</p>
 
-<a ng-click="retreive_location(location)" ng-repeat="(name, location) in existing_locations" class="btn btn-primary">{{name}}</a>
+<a ng-click="retreive_location(location)" ng-repeat="(name, location) in existing_locations" class="btn btn-primary fill">{{name}}</a>

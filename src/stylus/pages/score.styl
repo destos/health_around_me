@@ -1,0 +1,23 @@
+.large-letter-score
+    text-align: center
+    width: 80px
+    height: @width
+    background: pink
+    margin: 30px auto 0
+    border-radius: @width
+    line-height: @width
+    overflow: hidden
+    color: white
+    &.f-score
+    &.d-score
+        background: $bad_color
+    &.c-score
+    &.b-score
+        background: $neutral_color
+    &.a-score
+        background: $good_color
+    .letter
+        font-size: 50px
+        font-weight: 600
+    .na
+        font-size $base_font_size

@@ -44,9 +44,17 @@ class Routes extends Config
         $stateProvider
             .state('home',
                 url: '/'
-                templateUrl: 'home.html'
+                views:
+                    '':
+                        templateUrl: 'home.html'
+                    'header':
+                        template: 'Welcome to HealthAround.me'
             )
             .state('about',
                 url: '/about'
-                templateUrl: 'about.html'
+                views:
+                    '':
+                        templateUrl: 'about.html'
+                    'header':
+                        template: 'About HealthAround.me'
             )

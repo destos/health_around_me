@@ -15,7 +15,14 @@ button_styles(class, base_color)
     color: white
     cursor: pointer
     margin-right: 5px
+    margin-bottom: 5px
     padding: 4px 8px
+    text-transform: upper-case
+    font-size: $base_font_size
+    text-decoration: none
+    box-sizing: border-box
+    text-align: center
+    transition: background 0.2s linear
     &:hover
         background: gray
         color: white
@@ -23,4 +30,11 @@ button_styles(class, base_color)
     button_styles('success', $good_color)
     button_styles('danger', $good_color)
     button_styles('warning', $neutral_color)
+
+    &.fill
+        width: 100%
+        margin-right: 0
+    &.large
+        padding: 8px 14px
+        font-size: $base_font_size + 6px
 

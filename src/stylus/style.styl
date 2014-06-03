@@ -15,12 +15,17 @@ body
     margin: 0
     padding: 0
     height: 100%
+    position: relative
 
     // slide everything to the left when menu is open
     &.menu-open
         #page-wrapper
         #main-menu
            transform: translate3d(-($nav_width), 0px, 0px)
+
+.content
+    padding: 0 10px
+    margin: 12px 0
 
 // All the stuff to do with making the slide out menu snazzy
 #page-wrapper
@@ -36,7 +41,7 @@ body
     position: fixed
     z-index: $menu_zindex
     top: 0
-    background: linear-gradient(left, rgba(black, 0.1) 0%, rgba(black, 0) 15%), linear-gradient(top right, #746E70, #53616D)
+    background: linear-gradient(left, rgba(black, 0.15) 0%, rgba(black, 0) 25%), linear-gradient(top right, #746E70, #53616D)
     width: $nav_width
     right: -($nav_width)
     transform: translate3d(0px, 0px, 0px)
@@ -75,7 +80,6 @@ body
     line-height: $menu_height
     cursor: pointer
     z-index: $menu_zindex + 10
-    color: white
     text-decoration: none
     font-size: 50px
     user-select: none
@@ -84,7 +88,8 @@ body
         position: relative
         top: -3px
         left: 0
-        transition: color 0.3s ease, left 0.3s ease
+        color: white
+        transition: left 0.3s ease, color 0.3s ease
         &:before
         &:after
             content: '–'
@@ -112,13 +117,15 @@ body
 
 #page-wrapper header
     height: $menu_height
-    background: gray
-    border-bottom: 1px solid black
+    background-color: #53616D
+    border-bottom: 1px solid rgba(darken(#53616D, 20%), 0.5)
     padding: 0 10px
     h1
         margin: 0
         font-size:  $base_font_size + 3px
+        font-weight: 300
         line-height: $menu_height
+        color: white
 
 .card-group
     .card
@@ -245,3 +252,6 @@ body
                             top: -86px
                     .score
                         opacity: 1
+
+@import 'pages/home.styl'
+@import 'pages/score.styl'

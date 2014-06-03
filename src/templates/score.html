@@ -1,10 +1,20 @@
-<h2>HealthAround.me Score</h2>
-
-<div class="large-letter-score">
-<!-- { {score | letter_score} } -->
-{{score}}
+<div class="large-letter-score {{letter_score | lowercase}}-score">
+    <div ng-if="score" class="letter">
+        {{letter_score}}
+    </div>
+    <div ng-if="!score" class="na">
+        n/a
+    </div>
 </div>
 
-<h3>Explore</h3>
-<a class="btn btn-primary" ng-click="go_to_interaction('cards')">Cards</a>
-<a class="btn btn-primary" ng-click="go_to_interaction('cards')">Bubble</a>
+<div ng-if="!score">
+    <p>Loading your score&hellip;</p>
+</div>
+
+<input type="range" ng-model="score" min="0" max="1" step="0.05">
+
+<div ng-if="score">
+    <h3>Explore the score</h3>
+    <a class="btn btn-primary" ng-click="go_to_interaction('cards')">Cards</a>
+    <a class="btn btn-primary" ng-click="go_to_interaction('cards')">Bubble</a>
+</div>

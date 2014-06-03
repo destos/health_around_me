@@ -1,6 +1,5 @@
 path       = require 'path'
 gulp       = require 'gulp'
-# nib        = require 'nib'
 CSSmin     = require 'gulp-minify-css'
 uglify     = require 'gulp-uglify'
 coffee     = require 'gulp-coffee'
@@ -17,14 +16,14 @@ production = process.env.NODE_ENV is 'production'
 paths =
   scripts:
     source: './src/app/**/*.coffee'
-    watch: './src/app/*.coffee'
+    watch: './src/app/**/*.coffee'
     destination: './public/js/'
   templates:
     source: './src/templates/**/*.html'
     watch: './src/templates/**/*.html'
   styles:
     source: './src/stylus/style.styl'
-    watch: './src/stylus/*.styl'
+    watch: './src/stylus/**/*.styl'
     destination: './public/css/'
   assets:
     source: './src/assets/**/*.*'
@@ -41,7 +40,7 @@ gulp.task 'scripts', ->
     .pipe($.ngClassify(
       appName: 'ham'
     ))
-    .pipe($.coffee(bare: false).on('error', handleError))
+    .pipe($.coffee(bare: false)).on('error', handleError)
     # make sure ham app is first module initialized
     .pipe($.order(['main.js']))
     .pipe($.concat("app.js"))

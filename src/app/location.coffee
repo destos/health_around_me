@@ -8,8 +8,8 @@ class LocationRoutes extends Config
                 url: '/location'
                 views:
                     '':
-                        controller: 'locationController'
                         templateUrl: 'location.html'
+                        controller: 'locationController'
                     'header':
                         template: 'Choose Your Location'
             )
