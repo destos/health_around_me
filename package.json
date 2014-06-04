@@ -1,17 +1,14 @@
 {
-  "name": "gulp-template",
-  "version": "0.0.0",
-  "description": "Project template for gulp.js",
+  "name": "health-around-me",
+  "version": "0.1.0",
+  "description": "Frontend code for healtharound.me",
   "main": "gulpfile.js",
   "scripts": {
-    "prepublish": "bower install",
+    "prepublish": "bower install && gulp build",
     "start": "gulp",
     "build": "gulp build"
   },
-  "keywords": [
-    "gulp",
-    "template"
-  ],
+  "keywords": [],
   "author": "",
   "dependencies": {},
   "devDependencies": {
@@ -29,9 +26,7 @@
     "gulp-gh-pages": "^0.3.2",
     "coffee-script": "~1.7.1",
     "gulp-ng-classify": "^1.0.0",
-    "gulpify": "^0.1.1",
     "gulp-load-plugins": "^0.5.1",
-    "watchify": "^0.10.1",
     "gulp-tap": "^0.1.1",
     "gulp-coffee": "^1.4.3",
     "gulp-concat": "^2.2.0",

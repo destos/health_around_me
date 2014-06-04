@@ -1,11 +1,8 @@
-# Project template for [gulp.js](http://gulpjs.com/)
-<img width="114px" height="257px" align="right" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png"/>
+# Frontend code for [healtharound.me](http://healtharound.me)
 
 ### What it does
-* [Jade](jade-lang.com) files to HTML
 * [Stylus](http://learnboost.github.io/stylus) files to CSS
-* [CoffeeScript](http://coffeescript.org/) files to Javascript through [browserify](http://browserify.org/)
-    * You are able to use 'require' in your client-side code
+* [CoffeeScript](http://coffeescript.org/) files to Javascript
 * Serves your static files to localhost:9001
 * Reloads your browser with LiveReload when files change
 
@@ -13,9 +10,11 @@
 - Install [Node.js](http://nodejs.org)
 
 ```
- git clone git@github.com:leonidas/gulp-project-template.git <your project name>
+ git clone git@github.com:CivicNinjas/HealthAround.me-frontend.git
  cd <your project name>
  npm install
+ npm install bower -g
+ bower install
  npm start
  open http://localhost:9001 in your browser
 ````
@@ -37,45 +36,10 @@ Minification, uglification and other tasks you're expected to run before deployi
 * All backend dependencies should be installed with **npm**. Browser dependencies should be installed with **bower** or with **npm**.
 
 ### Adding 3rd party libraries
-**Note**: If the package you are looking for can be found in NPM it's much easier to install it from there. After installing packages from NPM they can be required without any of the following instructions.
 
     bower install jquery --save
 
-Now to use jQuery in your frontend code, you'll need to add jQuery to "browser" section of your package.json. Your package.json should be something like this:
-
-    ...
-
-    "browser": {
-      "jquery": "./bower_components/jquery/dist/jquery.js"
-    },
-    "browserify-shim": {},
-    "browserify": {
-      "transform": [ "coffeeify", "browserify-shim" ]
-    }
-    ...
-
-Now your should be able to require jQuery in your coffee files
-
-    $ = require 'jquery'
-
-For non-CommonJS compatible modules you have to use browserify-shim. Read more about it [here](https://github.com/thlorenz/browserify-shim).
-
-### Using JavaScript instead of CoffeeScript
-Remove coffeeify transform from package.json file (browserify.transform field) 
-``````
-"browserify": {
-  "transform": ["browserify-shim"]
-}
-``````
-
-and change the ".coffee" extension to ".js" from gulpfile.coffee 
-``````
-paths =
-  scripts:
-    source: './src/coffee/main.js'
-`````
-
-You also can change the directory name to scripts or what ever.
+*More specific instructions to follow and revamp of js_libs gulp task*
 
 ### Enable LiveReload
 Install [LiveReload for Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
