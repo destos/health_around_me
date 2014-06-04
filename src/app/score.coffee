@@ -38,7 +38,7 @@ angular.module('ham').filter 'letter_score', ->
         return score if not angular.isNumber(score)
         # take 0 - 1 and select a letter
         try
-            ['F','F','F','F','F','F','F','D','C','B','A'][Math.floor(score * 10)]
+            ['F','F','D','D','C','C','B','B','A','A','A'][Math.floor(score * 10)]
         catch e
             return score
 
@@ -66,6 +66,8 @@ class ScoreState extends Controller
             for elm in score_data.elements
                 total_score += elm.score
             $scope.score = total_score / score_data.elements.length
+            # FUTURE implementation
+            # $scope.score = score_data.score
 
         $scope.$watch 'score', (score) ->
             $scope.letter_score = $filter('letter_score')(parseFloat(score))
