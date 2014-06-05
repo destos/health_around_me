@@ -4,6 +4,7 @@ class Ham extends App
         # 'ngAnimate'
         'ui.router'
         'geolocation'
+        'hc.marked'
     ]
 
 
@@ -58,3 +59,9 @@ class Routes extends Config
                     'header':
                         template: 'About HealthAround.me'
             )
+
+class HAMConfig extends Config
+    constructor: (markedProvider) ->
+         markedProvider.setOptions
+            gfm: true
+            tables: true
