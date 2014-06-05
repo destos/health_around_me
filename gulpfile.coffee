@@ -42,9 +42,11 @@ gulp.task 'scripts', ->
     .pipe($.coffee(bare: false)).on('error', handleError)
     # make sure ham app is first module initialized
     .pipe($.order(['main.js']))
+    .pipe($.filesize())
     .pipe($.concat("app.js"))
   scripts = scripts.pipe($.uglify()) if production
   scripts.pipe(gulp.dest(paths.scripts.destination))
+    .pipe($.filesize())
     .pipe livereload reloadServer
 
 gulp.task 'templates', ->
@@ -55,6 +57,7 @@ gulp.task 'templates', ->
     ))
     .on 'error', handleError
     .pipe gulp.dest paths.scripts.destination
+    .pipe($.filesize())
     .pipe livereload(reloadServer)
 
 gulp.task 'styles', ->
@@ -76,6 +79,7 @@ gulp.task 'assets', ->
   gulp
     .src paths.assets.source
     .pipe gulp.dest paths.assets.destination
+    .pipe($.filesize())
     .pipe livereload(reloadServer)
 
 gulp.task 'server', ->
