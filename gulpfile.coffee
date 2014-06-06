@@ -9,6 +9,7 @@ prefix     = require 'gulp-autoprefixer'
 lr         = require 'tiny-lr'
 reloadServer = lr()
 $ = require('gulp-load-plugins')()
+config = require './package.json'
 
 production = process.env.NODE_ENV is 'production'
 
@@ -48,6 +49,34 @@ gulp.task 'scripts', ->
   scripts.pipe(gulp.dest(paths.scripts.destination))
     .pipe($.filesize())
     .pipe livereload reloadServer
+
+gulp.task 'js_libs', ->
+  bower_root = './bower_components/'
+  # move to package.json?
+  lib_list = [
+    'angular/angular.js'
+    'angular-animate/angular-animate.js'
+    'angular-leaflet-directive/dist/angular-leaflet-directive.js'
+    'marked/lib/marked.js'
+    'angular-marked/angular-marked.js'
+    'gsap/src/uncompressed/TweenMax.js'
+    'ng-Fx/dist/ng-Fx.js'
+    'angularjs-geolocation/src/geolocation.js'
+    'angular-ui-router/release/angular-ui-router.js'
+  ]
+  src_list = lib_list.map (lib) ->
+    return bower_root+lib
+  lib_names = lib_list.map (lib) ->
+    return path.basename(lib)
+  libs = gulp
+    .src(src_list)
+    .pipe($.order(lib_names))
+  libs = libs.pipe($.uglify()) if production
+  libs
+    .pipe($.concat("libs.js"))
+    .pipe($.filesize())
+    .on 'error', handleError
+    .pipe gulp.dest paths.scripts.destination
 
 gulp.task 'templates', ->
   gulp
@@ -99,17 +128,6 @@ gulp.task "watch", ->
 gulp.task 'deploy', ->
   gulp.src("./public/**/*")
     .pipe($.ghPages())
-
-gulp.task 'js_libs', ->
-  list = [
-    './bower_components/angular/angular.js'
-    './bower_components/angularjs-geolocation/src/geolocation.js'
-    './bower_components/angular-ui-router/release/angular-ui-router.js'
-  ]
-  gulp
-    .src(list)
-    .on 'error', handleError
-    .pipe gulp.dest paths.scripts.destination + 'libs/'
 
 gulp.task "build", ['scripts', 'templates', 'styles', 'assets', 'js_libs']
 gulp.task "default", ["build", "watch", "server"]

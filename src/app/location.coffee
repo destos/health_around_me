@@ -7,7 +7,7 @@ class LocationRoutes extends Config
             .state('location_lookup',
                 url: '/location'
                 views:
-                    '':
+                    'content':
                         templateUrl: 'location.html'
                         controller: 'locationController'
                     'header':
